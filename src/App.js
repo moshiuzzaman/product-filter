@@ -1,25 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Home from './Component/Home/Home';
+import Shop from './Component/Shop/Shop';
+import { createContext } from 'react';
+import { useState } from 'react';
+
+export const CatContext=createContext()
 
 function App() {
+const [category, setCategory]=useState("")
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CatContext.Provider value={[category, setCategory]}>
+      <Home></Home>
+      <Shop></Shop>
+    </CatContext.Provider>
+   
+
   );
 }
 
